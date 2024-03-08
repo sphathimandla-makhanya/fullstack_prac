@@ -25,14 +25,14 @@ export default{
         const edit = await updateFriend(name,age,+req.params.name)
         res.json(await getFriends())
     },
-    // newUser: async(req,res)=>{
-    //     const {username,password}=req.body
-    //     bcrypt.hash(password,10,async(err,hash)=>{
-    //         if(err) throw err
-    //         await addUser(username,hash)
-    //         res.send({
-    //             msg: "You have created an account"
-    //         })
+//     newUser: async(req,res)=>{
+//         const {username,password}=req.body
+//         bcrypt.hash(password,10,async(err,hash)=>{
+//             if(err) throw err
+//             await addUser(username,hash)
+//             res.send({
+//                 msg: "You have created an account"
+//             })
 // })
+// }
 }
-

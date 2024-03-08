@@ -1,3 +1,4 @@
+// import {pool} from '../config/config'
 import mysql from 'mysql2'
 import {config} from 'dotenv'
 config()

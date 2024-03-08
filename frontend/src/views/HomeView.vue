@@ -4,6 +4,7 @@
       <th>
         Name
       </th>
+      <button @click="getFriends">Load friends</button>
       <tr>
         <tbody v-for="item in $store.state.Friends" :key="item.id">
           <td>{{ item.id }}</td>
@@ -50,7 +51,7 @@ export default {
       this.$store.dispatch('addFriend', this.$data)
     }
   },mounted(){
-    this.getFriends
+    
   }
   }
 </script>

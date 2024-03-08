@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
+import router from '@/router';
+axios.defaults.withCredentials=true  //store cookies in developer tools application tab
 const baseUrl = 'http://localhost:7000'
 
 export default createStore({
@@ -53,12 +55,23 @@ export default createStore({
     async checkUser({commit}, currentUser){
       //console.log(newUser);
       let {data}=await axios.post(baseUrl+'/login', currentUser)
-      alert(data.msg)
-      commit('setLogged',true)
-      // window.location.reload()
+      $cookies.set('jwt',data.token) //data.token is the value of the token being sent from axios
+      // alert(data.msg)
+      await router.push('/') // to redirect the page after logging/signing up  
+      //commit('setLogged',true)
+      window.location.reload()
+    },
+    async logout(context){
+      let cookies = $cookies.keys()
+      console.log(cookies)
+      $cookies.remove('jwt')  //deleting from frontend
+      window.location.reload()
+      // let {data}= await axios.delete(baseUrl+'/logout')  //deleting from backend
+      // alert(data.msg)
     }
 
   },
   modules: {
   }
 })
+
